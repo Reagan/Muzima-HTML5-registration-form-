@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/jquery-autocomplete-min.js"></script>
+    <script src="js/muzima.js"></script>
+
+    <title>Registration Form</title>
+</head>
+<body class="col-md-8 col-md-offset-2">
+<div id="pre_populate_data"></div>
+<form id="registration_form" name="registration_form">
+
+<h2 class="text-center">Registration Form</h2>
+
+<div class="section">
+    <h3>Demographics</h3>
+
+    <div class="form-group">
+        <input class="form-control" id="patient.uuid"
+               name="patient.uuid" type="hidden" readonly="readonly">
+    </div>
+ 
+    <div class="form-group">
+        <label for="patient.family_name">Family Name:</label>
+        <input class="form-control" id="patient.family_name" name="patient.family_name" type="text">
+    </div>
+    <div class="form-group">
+        <label for="patient.given_name">Given Name:</label>
+        <input class="form-control" id="patient.given_name" name="patient.given_name" type="text">
+    </div>
+    <div class="form-group">
+        <label for="patient.middle_name">Middle Name:</label>
+        <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text">
+    </div>
+    <div class="form-group">
+        <label for="patient.sex">Sex:</label>
+        <select class="form-control" id="patient.sex" name="patient.sex">
+            <option value="">...</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="patient.phone_number">Phone Number:</label>
+        <input class="form-control" id="patient.phone_number" name="patient.phone_number" type="phonenumber">
+    </div>
+    <div class="form-group">
+        <label for="patient.mother_s_name">Mother's Name:</label>
+        <input class="form-control" id="patient.mother_s_name" name="patient.mother_s_name" type="text">
+    </div>
+    <div class="form-group">
+        <label for="patient.amrs_universal_id_assigned">AMRS Universal ID assigned:</label>
+        <input class="form-control" id="patient.amrs_universal_id_assigned" name="patient.amrs_universal_id_assigned" type="text">
+    </div>
+</div>
+<div class="section">
+    <div class="form-group">
+        <label for="patient.will_record_birthdate">Will record date of birth:</label>
+	<select class="form-control autocomplete-select" id="patient.will_record_birthdate" name="patient.will_record_birthdate"
+                required="required">
+            <option value="..."></option>
+ 	    <option value="1">By Birth Date</option>
+            <option value="2">By Age</option>
+        </select> 
+    </div>
+    <div class="form-group">
+        <label for="patient.birthdate">Select birth date:</label>
+        <input class="form-control datepicker nonFutureDate" id="patient.birthdate" name="patient.birthdate" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.is_birthdate_estimate">Is this birthdate an estimate?</label>
+	<select class="form-control autocomplete-select" id="patient.is_birthdate_estimate" name="patient.is_birthdate_estimate"
+                required="required">
+            <option value="..."></option>
+ 	    <option value="1">Yes</option>
+            <option value="2">No</option>
+        </select>
+    </div>
+</div>
+<div class="section">
+    <h3>Encounter Details</h3>
+
+    <div class="form-group">
+        <label for="encounter.location">Encounter Location:<span class="required">*</span></label>
+        <select class="form-control autocomplete-select" id="encounter.location_id" name="encounter.location"
+                placeholder="Start typing in location/Dispensary name..."
+                required="required">
+            <option value=""></option>
+            <option value="2">Mosoriot Health Centre</option>
+            <option value="3">Turbo Health Centre</option>
+            <option value="12">Teso District Hospital</option>
+            <option value="60">Chepsaita Dispensary</option>
+            <option value="65">Angurai Health Centre</option>
+            <option value="90">Changara Dispensary</option>
+            <option value="91">Malaba Dispensary</option>
+            <option value="106">Kamollo Dispensary</option>
+            <option value="110">Mogoget Dispensary</option>
+            <option value="111">Biribiriet Dispensary</option>
+            <option value="112">Itigo Dispensary</option>
+            <option value="113">Lelmokwo Dispensary</option>
+            <option value="114">Kokwet Dispensary</option>
+            <option value="115">Ngechek Dispensary</option>
+            <option value="116">Cheramei Dispensary</option>
+            <option value="117">Murgusi Dispensary</option>
+            <option value="118">Cheplasgei Dispensary</option>
+            <option value="119">Sigot Dispensary</option>
+            <option value="120">Sugoi A Dispensary</option>
+            <option value="121">Sugoi B Dispensary</option>
+            <option value="122">Chepkemel Dispensary</option>
+            <option value="124">Akichelesit Dispensary</option>
+            <option value="125">Aboloi Dispensary</option>
+            <option value="126">Moding Dispensary</option>
+            <option value="127">Sambut</option>
+            <option value="128">Ngenyilel</option>
+            <option value="129">Sosiani</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="encounter.provider_id">Provider ID:</label>
+        <select class="form-control autocomplete-select" id="encounter.provider_id" name="encounter.provider_id">
+            <option value=""></option>
+            <option value="3356-3">David S. Pamba</option>
+            <option value="237-8">Ariya Patrick</option>
+            <option value="3331-6">Benjamin Osiya Ekirapa</option>
+            <option value="3332-4">Molly Omodek Aluku</option>
+            <option value="3333-2">Mercyline Lubisya Omusolo</option>
+            <option value="3334-0">Julita Auma Ndege</option>
+            <option value="3335-7">Caroline Fedha Injete</option>
+            <option value="3336-5">Nelly Nabwire Shiundu</option>
+            <option value="3337-3">Nicholas Dekkers Shitaha</option>
+            <option value="3338-1">Tezra Asangire Okaal</option>
+            <option value="3340-7">Sophy Ikarot Idele</option>
+            <option value="3339-9">Maureen Jacinta Muteitsi</option>
+            <option value="3341-5">Gibson Musera Mutira</option>
+            <option value="3342-3">Titus Chuma Khusua</option>
+            <option value="3343-1">Pamela Ekuriai Emukule</option>
+            <option value="3344-9">Rhoda Jeruto Kurgat</option>
+            <option value="3345-6">Zaitun Hassan Mohamed</option>
+            <option value="3346-4">Grace Gichanga Nyathogora</option>
+            <option value="3347-2">Gabriel Silas Okapes</option>
+            <option value="3348-0">Henry Samson Obonyo</option>
+            <option value="3349-8">Rebecca M. Wambura</option>
+            <option value="3350-6">Zeruya Amwatok Barua</option>
+            <option value="3351-4">Immaculate Otengo Namibia</option>
+            <option value="3352-2">Pamela Were Wamoyi</option>
+            <option value="3357-1">Caroline Wafula Nandisi</option>
+            <option value="3353-0">Markins Opuko Cresent</option>
+            <option value="3354-8">Benedict Kifufuli Wafula</option>
+            <option value="3355-5">Clementine Ingosi Osiel</option>
+        </select>
+    </div> 
+    <div class="form-group">
+        <label for="encounter.encounter_datetime">Encounter Date:<span class="required">*</span></label>
+        <input class="form-control datepicker nonFutureDate" id="encounter.encounter_datetime"
+               name="encounter.encounter_datetime" type="text" readonly="readonly" encounter.encounter_datetime
+               required="required">
+    </div>
+</div>
+<div class="form-group text-center">
+    <input class="btn btn-primary" id="save_draft" type="button" value="Save as draft"/>
+    <input class="btn btn-primary" id="submit_form" type="submit" value="Submit as complete"/>
+</div>
+
+</form>
+
+</body>
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('#save_draft').click(function () {
+        document.saveDraft();
+    });
+    $('#dispensary_form').validate({
+        rules: {
+            pulse: {
+                number: true,
+                range: [0, 230]
+            },
+            temperature_c: {
+                number: true,
+                range: [25, 43]
+            },
+            weight_kg: {
+                number: true,
+                range: [0, 250]
+            },
+            height_cm: {
+                number: true,
+                range: [10, 228]
+            },
+            glycosylated_hemoglobin: {
+                number: true,
+                range: [0, 20]
+            },
+            'obs.tmp_drugs': {
+                checkNoneSelectedAlone: true
+            },
+            '1069^REVIEW OF SYSTEMS, GENERAL^99DCT': {
+                checkNoneSelectedAlone: true
+            },
+            'obs.drugs_dispensed': {
+                checkNoneSelectedAlone: true
+            },
+            '6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT': {
+                checkNoneSelectedAlone: true
+            },
+            '1272^REFERRALS ORDERED^99DCT': {
+                checkNoneSelectedAlone: true
+            }
+        },
+        submitHandler: function (form) {
+            document.submit();
+        }
+    });
+
+    /* Start - Checking that the diastolic blood pressure is less than the systolic blood pressure */
+    $.validator.addMethod("lessThankSystolic", function (value, element) {
+                var systolicBloodPressure = parseInt($(element).closest('.section').find('.systolicBloodPressure').val());
+                return (parseInt(value) <= systolicBloodPressure);
+            }, "DBP cannot be more than Systolic Blood Pressure."
+    );
+
+    // attach 'lessThankSystolic' class to perform validation.
+    jQuery.validator.addClassRules({
+        lessThankSystolic: { lessThankSystolic: true }
+    });
+    /* End - lessThankSystolic*/
+
+    /*  Start - Based on Selected medication prescribed show dispensed fields */
+    var selectCorrespondingDrugsDispensed = function (selectedElement) {
+        var drugsArray = {"#obs\\.drugs_dispensed\\.Metformin": "#metformin_dispense",
+            "#obs\\.drugs_dispensed\\.Glibenclamide": "#glibenclamide_dispense",
+            "#obs\\.drugs_dispensed\\.Enalapril": "#enalapril_dispense",
+            "#obs\\.drugs_dispensed\\.HCTZ": "#hctz_dispense",
+            "#obs\\.drugs_dispensed\\.Losartan": "#losartan_dispense",
+            "#obs\\.drugs_dispensed\\.Nifedipine": "#nifedipine_dispense",
+            "#obs\\.drugs_dispensed\\.Other": "#other_medication"
+        };
+        $.each(drugsArray, function (k, v) {
+            if ($(k).is(':checked')) {
+                $(v).show();
+            } else {
+                $(v).hide();
+            }
+        })
+    };
+
+    var $obs_drugs_dispensed = $('input[name="obs.drugs_dispensed"]');
+    $obs_drugs_dispensed.change(function () {
+        selectCorrespondingDrugsDispensed();
+    });
+    $obs_drugs_dispensed.trigger('change');
+    /*  End - Based on Selected medication prescribed show dispensed fields */
+
+    /*  Start - Based on Current medication prescribed show dosage fields */
+    var selectCorrespondingCurrentMedication = function (selectedElement) {
+        var drugsArray = {"#obs\\.tmp_drugs\\.Metformin": "#medication_metformin",
+            "#obs\\.tmp_drugs\\.Glibenclamide": "#medication_glibenclamide",
+            "#obs\\.tmp_drugs\\.Enalapril": "#medication_enalapril",
+            "#obs\\.tmp_drugs\\.HCTZ": "#medication_hctz",
+            "#obs\\.tmp_drugs\\.Losartan": "#medication_losartan",
+            "#obs\\.tmp_drugs\\.Nifedipine": "#medication_nifedipine",
+            "#obs\\.tmp_drugs\\.Other": "#medication_other"
+        };
+        $.each(drugsArray, function (k, v) {
+            $(k).change(function () {
+                if ($(k).is(':checked')) {
+                    $(v).show();
+                } else {
+                    $(v).hide();
+                }
+            });
+            $(k).trigger('change');
+        })
+    };
+    selectCorrespondingCurrentMedication();
+    /*  End - Based on Current medication prescribed show dosage fields */
+
+    /* When a provider is selected from the provider list, hide the provider id text field */
+    $('#encounter\\.provider_id_select').change(function () {
+        var $show_provider_id_text = $('.show_provider_id_text');
+        var selected_value = $('#encounter\\.provider_id_select').val();
+        if (selected_value != '') {
+            $show_provider_id_text.hide();
+            $show_provider_id_text.find('input').val(selected_value);
+        }
+        else {
+            $show_provider_id_text.show();
+            $show_provider_id_text.find('input').val('');
+        }
+    });
+
+    /*  Start - If some medication dose was missed, ask for reason */
+    var displayReasonForMissingMedicationWhenNeeded = function (selectedElement) {
+        var drugsArray = {"#obs\\.medication_metformin\\.number_of_pills_taken": ".metformin_missed_medication_reason",
+            "#obs\\.medication_glibenclamide\\.number_of_pills_taken": ".glibenclamide_missed_medication_reason",
+            "#obs\\.medication_enalapril\\.number_of_pills_taken": ".enalapril_missed_medication_reason",
+            "#obs\\.medication_hctz\\.number_of_pills_taken": ".hctz_missed_medication_reason",
+            "#obs\\.medication_losartan\\.number_of_pills_taken": ".losartan_missed_medication_reason",
+            "#obs\\.medication_nifedipine\\.number_of_pills_taken": ".nifedipine_missed_medication_reason"
+        };
+        $.each(drugsArray, function (pillsTaken, missedReason) {
+            $(pillsTaken).change(function () {
+                var selected_value = $(pillsTaken).val();
+                var $reason = $(missedReason);
+                if (selected_value != '' && selected_value != '1163^ALL^99DCT') {
+                    $reason.show();
+                }
+                else {
+                    $reason.hide();
+                }
+            });
+            $(pillsTaken).trigger('change');
+        })
+    };
+    displayReasonForMissingMedicationWhenNeeded();
+    /*  End - Start - If some medication dose was missed, ask for reason */
+
+    /* Start - Asks for the dosage of other medication in ml only if it is not provided in mg */
+    $(document.body).on('change', '.otherMedicationNumberOfMilligram', function () {
+        $other_medication_number_of_milliliter_group = $(this).closest('.section').children('.other_medication_number_of_milliliter_group');
+        if ($(this).val() != '') {
+            $other_medication_number_of_milliliter_group.hide();
+            $other_medication_number_of_milliliter_group.find('input').val('');
+        } else {
+            $other_medication_number_of_milliliter_group.show();
+        }
+    });
+
+    $('#other_medication_number_of_milligram').trigger('change');
+    /* End - Asks for the dosage of other medication in ml only if it is not provided in mg */
+
+    /* Start - Ask for menstrual & urine pregnancy info only if the client is a woman*/
+    var $patientSex = $('#patient\\.sex');
+    $patientSex.change(function () {
+        var $menstrualPeriod = $('.menstrualPeriod');
+        var $urinePregnancyTestQualitative = $('.urinePregnancyTestQualitative');
+        if ($patientSex.val() != 'F') {
+            $menstrualPeriod.hide();
+            $menstrualPeriod.find('select').val('');
+            $urinePregnancyTestQualitative.hide();
+            $urinePregnancyTestQualitative.find('select').val('');
+        } else {
+            $menstrualPeriod.show();
+            $urinePregnancyTestQualitative.show();
+        }
+    });
+    $patientSex.trigger('change');
+    /* End - Ask for menstrual & urine pregnancy info only if the client is a woman*/
+
+    /* Start - Checks that a field is a decimal */
+    $.validator.addClassRules({
+        systolicBloodPressure: {
+            number: true,
+            range: [50, 300]
+        },
+        diastolicBloodPressure: {
+            number: true,
+            range: [20, 150]
+        },
+        glucose: {
+            number: true,
+            range: [0, 150]
+        },
+        numberOfTablets: {
+            number: true,
+            range: [0, 180]
+        },
+        numberOfMilligrams: {
+            number: true,
+            range: [0.0, 1000.0]
+        }
+    });
+    /* End - Checks that a field is a decimal */
+
+    /* Start - Compute the BMI if the weight & height are provided */
+    var $weight = $('#weight_kg');
+    var $height = $('#height_cm');
+    var $bodyMassIndex = $('.bodyMassIndex');
+    var displayBMI = function () {
+        if (($weight.val() != '') && ($height.val() != '')) {
+            $bodyMassIndex.find('input').val(computeBMI());
+            $bodyMassIndex.show();
+        } else {
+            $bodyMassIndex.hide();
+        }
+    };
+    var computeBMI = function () {
+        var weight = parseInt($weight.val());
+        var height = parseInt($height.val()) / 100;
+        return weight / (height * height);
+    };
+
+    $weight.change(displayBMI());
+    $weight.trigger('change');
+
+    $height.change(displayBMI);
+    $height.trigger('change');
+    /* End - Compute the BMI if the weight & height are provided */
+
+    /*  Start - Based on Current medication, and medication prescribed, show or hide "dosage changed" fields */
+    var showOrHideDosageChanged = function (drugCurrent, drugDispensed, dosageChanged) {
+        if ($(drugCurrent).is(':checked') && $(drugDispensed).is(':checked')) {
+            $(dosageChanged).show();
+        } else {
+            $(dosageChanged).find("select").val('');
+            $(dosageChanged).find("select").trigger('change');
+            $(dosageChanged).hide();
+        }
+    }
+
+    var selectCorrespondingDosageChanged = function (selectedElement) {
+        var drugsArray = {
+            "Metformin": "#metformin_dosage_changed",
+            "Glibenclamide": "#glibenclamide_dosage_changed",
+            "Enalapril": "#enalapril_dosage_changed",
+            "HCTZ": "#hctz_dosage_changed",
+            "Losartan": "#losartan_dosage_changed",
+            "Nifedipine": "#nifedipine_dosage_changed"
+        };
+        $.each(drugsArray, function (k, v) {
+            var drugCurrent = "#obs\\.tmp_drugs\\." + k;
+            var drugDispensed = "#obs\\.drugs_dispensed\\." + k;
+            var dosageChanged = v;
+            $(drugCurrent).change(function () {
+                showOrHideDosageChanged(drugCurrent, drugDispensed, dosageChanged)
+            });
+            $(drugDispensed).change(function () {
+                showOrHideDosageChanged(drugCurrent, drugDispensed, dosageChanged)
+            });
+            $(drugCurrent).trigger('change');
+        })
+    };
+    selectCorrespondingDosageChanged();
+    /*  End - Based on Current medication, and medication prescribed, show or hide "dosage changed" fields */
+
+    /*  Start - Based on "Did you change the xx dosage" show or hide  "prescribed dosage" fields */
+    var showOrHidePrescribedDosage = function (selectedElement) {
+        var drugsArray = ["metformin", "glibenclamide", "enalapril", "enalapril", "hctz", "losartan", "nifedipine"];
+        $.each(drugsArray, function (index, v) {
+            var changeDosageSelect = "#obs\\.other_medication_order_" + v;
+            var prescribedDosage = "#" + v + "_prescribed_dosage";
+            var currentDosage = "#" + v + "_number_of_milligram";
+            $(changeDosageSelect).change(function () {
+                if ($(changeDosageSelect).val() == "1066^NO^99DCT") {
+                    $(prescribedDosage).find('input').val($(currentDosage).val());
+                    $(prescribedDosage).hide();
+                } else {
+                    $(prescribedDosage).show();
+                }
+            });
+            $(currentDosage).change(function () {
+                if ($(changeDosageSelect).val() == "1066^NO^99DCT") {
+                    $(prescribedDosage).find('input').val($(currentDosage).val());
+                }
+            })
+            $(changeDosageSelect).trigger('change');
+        })
+    };
+    showOrHidePrescribedDosage();
+    /*  End - Based on Selected medication prescribed show dispensed fields */
+
+    /* Start - Define variables for conditional displays */
+    var $systolicBloodPressure = $('#obs\\.systolic_blood_pressure');
+    var $diastolicBloodPressure = $('#obs\\.diastolic_blood_pressure');
+    var $currentVisitType = $('#obs\\.current_visit_type');
+    var $metforminCurrentMilligram = $('#metformin_number_of_milligram');
+    var $urinePregnancyTest = $('#obs\\.urine_pregnancy_test_qualitative');
+    var $serumGlucoseFasting = $('#obs\\.serum_glucose_fasting');
+    var $glycosylatedHemoglobin = $('#glycosylated_hemoglobin');
+    var $metforminFrequencyPerDay = $('#obs\\.medication_metformin\\.medication_frequency_per_day');
+    var getCurrentMedicationValues = function () {
+        return $('input[name="obs.tmp_drugs"]:checked').map(function () {
+            return this.value;
+        }).get();
+    };
+    var getReviewOfSystemsGeneralValues = function () {
+        return $('input[name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"]:checked').map(function () {
+            return this.value;
+        }).get();
+    };
+    var checkReviewOfSystemsGeneralForDisplay = function () {
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        return reviewOfSystemsGeneral.indexOf("590^EDEMA, LEGS^99DCT") < 0 && reviewOfSystemsGeneral.indexOf("5963^SHORTNESS OF BREATH WITH EXERTION^99DCT") < 0 &&
+                reviewOfSystemsGeneral.indexOf("6021^OLIGURIA^99DCT") < 0 && reviewOfSystemsGeneral.indexOf("6005^FOCAL WEAKNESS^99DCT") < 0;
+    };
+    /* End - Define variables for conditional displays */
+
+    /* Start - Conditional display of HTN reminders */
+
+    var displayHTNReminder1 = function () {
+        var $htn_reminder_1 = $('#htn_reminder_1');
+        var selectedVisitType = $currentVisitType.val();
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var currentMedication = getCurrentMedicationValues();
+        if ((selectedVisitType == '7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT' || selectedVisitType == '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT') &&
+                (systolicBloodValue >= 100 && systolicBloodValue <= 140) && (diastolicBloodValue >= 50 && diastolicBloodValue <= 90) &&
+                currentMedication.indexOf("enalapril") < 0 && currentMedication.indexOf("hctz") < 0 && currentMedication.indexOf("losartan") < 0
+                && currentMedication.indexOf("nifedipine") < 0 && checkReviewOfSystemsGeneralForDisplay()
+                ) {
+            $htn_reminder_1.show();
+        } else {
+            $htn_reminder_1.hide();
+        }
+    };
+    displayHTNReminder1();
+
+    var $urinePregnancyTestQualitative = $('#obs\\.urine_pregnancy_test_qualitative');
+    var $birthdate = $('#patient\\.birthdate');
+    var conditionToDisplayHTNReminder2 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        return ((selectedVisitType == '7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT') &&
+                ((systolicBloodValue >= 140 && systolicBloodValue <= 180) || (diastolicBloodValue >= 90 && diastolicBloodValue <= 110)) &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT' &&
+                checkReviewOfSystemsGeneralForDisplay());
+    };
+    var displayHTNReminder2 = function () {
+        var $htn_reminder_2 = $('#htn_reminder_2');
+        var birthdate = $birthdate.val();
+        var ageInYears = $.fn.getAgeInYears(birthdate);
+        if (conditionToDisplayHTNReminder2() && ageInYears <= 35) {
+            $htn_reminder_2.show();
+        } else {
+            $htn_reminder_2.hide();
+        }
+    };
+    displayHTNReminder2();
+
+    var $serumGlucoseFasting = $('#serum_glucose_fasting');
+    var $glycosylatedHemoglobin = $('#glycosylated_hemoglobin');
+    var isAtLeast35YearsOld = function () {
+        var birthdate = $birthdate.val();
+        var ageInYears = $.fn.getAgeInYears(birthdate);
+        return ageInYears >= 35;
+    };
+    var displayHTNReminder3a = function () {
+        var $htn_reminder_3a = $('#htn_reminder_3a');
+        var serumGlucoseFasting = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobin = parseFloat($glycosylatedHemoglobin.val());
+        if (conditionToDisplayHTNReminder2() && serumGlucoseFasting <= 5.6 &&
+                glycosylatedHemoglobin <= 5.7 && isAtLeast35YearsOld()) {
+            $htn_reminder_3a.show();
+        } else {
+            $htn_reminder_3a.hide();
+        }
+    };
+    displayHTNReminder3a();
+
+    var displayHTNReminder3b = function () {
+        var $htn_reminder_3b = $('#htn_reminder_3b');
+        var currentMedication = getCurrentMedicationValues();
+        if (conditionToDisplayHTNReminder2() && isAtLeast35YearsOld() &&
+                (currentMedication.indexOf("enalapril") >= 0 || currentMedication.indexOf("hctz") >= 0 ||
+                        currentMedication.indexOf("losartan") >= 0 || currentMedication.indexOf("nifedipine") >= 0)
+                ) {
+            $htn_reminder_3b.show();
+        } else {
+            $htn_reminder_3b.hide();
+        }
+    };
+    displayHTNReminder3b();
+
+    var displayHTNReminder3c = function () {
+        var $htn_reminder_3c = $('#htn_reminder_3c');
+        var serumGlucoseFasting = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobin = parseFloat($glycosylatedHemoglobin.val());
+        if (conditionToDisplayHTNReminder2() && serumGlucoseFasting >= 5.6 &&
+                glycosylatedHemoglobin >= 5.7 && isAtLeast35YearsOld()) {
+            $htn_reminder_3c.show();
+        } else {
+            $htn_reminder_3c.hide();
+        }
+    };
+    displayHTNReminder3c();
+
+    var displayHTNReminder4 = function () {
+        var $htn_reminder_4 = $('#htn_reminder_4');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        if ((systolicBloodValue >= 180 || diastolicBloodValue >= 110) &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT') {
+            $htn_reminder_4.show();
+        } else {
+            $htn_reminder_4.hide();
+        }
+    };
+    displayHTNReminder4();
+
+    var displayHTNReminder5 = function () {
+        var $htn_reminder_5 = $('#htn_reminder_5');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        if ((systolicBloodValue >= 140 || diastolicBloodValue >= 90) &&
+                urinePregnancyTestQualitativeValue == '703^POSITIVE^99DCT') {
+            $htn_reminder_5.show();
+        } else {
+            $htn_reminder_5.hide();
+        }
+    };
+    displayHTNReminder5();
+
+    var conditionToDisplayHTNReminder6 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        var currentMedication = getCurrentMedicationValues();
+        return ((selectedVisitType == '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT') &&
+                ((systolicBloodValue >= 140 && systolicBloodValue <= 180) || (diastolicBloodValue >= 90 && diastolicBloodValue <= 110)) &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT' && isAtLeast35YearsOld() &&
+                checkReviewOfSystemsGeneralForDisplay() &&
+                currentMedication.indexOf("enalapril") < 0 && currentMedication.indexOf("hctz") < 0 && currentMedication.indexOf("losartan") < 0
+                && currentMedication.indexOf("nifedipine") < 0);
+    };
+    var displayHTNReminder6 = function () {
+        var $htn_reminder_6a = $('#htn_reminder_6a');
+        var serumGlucoseFasting = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobin = parseFloat($glycosylatedHemoglobin.val());
+        if (conditionToDisplayHTNReminder6() && (serumGlucoseFasting <= 5.6 || glycosylatedHemoglobin <= 5.7)) {
+            $htn_reminder_6a.show();
+        } else {
+            $htn_reminder_6a.hide();
+        }
+    };
+    displayHTNReminder6();
+
+    var displayHTNReminder6b = function () {
+        var $htn_reminder_6b = $('#htn_reminder_6b');
+        var serumGlucoseFasting = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobin = parseFloat($glycosylatedHemoglobin.val());
+        if (conditionToDisplayHTNReminder6() && (serumGlucoseFasting >= 5.6 || glycosylatedHemoglobin >= 5.7)) {
+            $htn_reminder_6b.show();
+        } else {
+            $htn_reminder_6b.hide();
+        }
+    };
+    displayHTNReminder6b();
+
+    var displayHTNReminder7 = function () {
+        var $htn_reminder_7 = $('#obs\\.htn_reminder_7');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        if (((systolicBloodValue >= 100 && systolicBloodValue <= 180) || (diastolicBloodValue >= 90 && diastolicBloodValue <= 110)) &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT' &&
+                (reviewOfSystemsGeneral.indexOf("590^EDEMA, LEGS^99DCT") >= 0 || reviewOfSystemsGeneral.indexOf("5963^SHORTNESS OF BREATH WITH EXERTION^99DCT") >= 0 ||
+                        reviewOfSystemsGeneral.indexOf("6021^OLIGURIA^99DCT") >= 0 || reviewOfSystemsGeneral.indexOf("6005^FOCAL WEAKNESS^99DCT") >= 0)) {
+            $htn_reminder_7.show();
+        } else {
+            $htn_reminder_7.hide();
+        }
+    };
+    displayHTNReminder7();
+
+    var $hctzNumberOfMilligram = $('#hctz_number_of_milligram');
+    var $hctzFrequencyPerDay = $('#obs\\.medication_hctz\\.medication_frequency_per_day');
+    var displayHTNReminder8 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var $htn_reminder_8 = $('#obs\\.htn_reminder_8');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        var currentMedication = getCurrentMedicationValues();
+        var hctzNumberOfMilligram = parseFloat($hctzNumberOfMilligram.val());
+        var hctzFrequencyPerDay = $hctzFrequencyPerDay.val();
+        if (selectedVisitType != '7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT' && systolicBloodValue <= 140
+                && diastolicBloodValue <= 90 &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT' && isAtLeast35YearsOld() &&
+                checkReviewOfSystemsGeneralForDisplay() && currentMedication.indexOf("hctz") >= 0 &&
+                hctzNumberOfMilligram == 25 &&
+                (hctzFrequencyPerDay == '1639^MORNING^99DCT' || hctzFrequencyPerDay == '1730^EVENING^99DCT' ||
+                        hctzFrequencyPerDay == '1891^ONCE A DAY^99DCT'
+                        )
+                ) {
+            $htn_reminder_8.show();
+        } else {
+            $htn_reminder_8.hide();
+        }
+    };
+    displayHTNReminder8();
+
+    var displayHTNReminder9 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var $htn_reminder_9 = $('#obs\\.htn_reminder_9');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        var currentMedication = getCurrentMedicationValues();
+        var hctzNumberOfMilligram = parseFloat($hctzNumberOfMilligram.val());
+        var hctzFrequencyPerDay = $hctzFrequencyPerDay.val();
+        if (selectedVisitType == '7036^RETURN DISPENSARY VISIT^99DCT' &&
+                ((systolicBloodValue >= 140 && systolicBloodValue <= 180) ||
+                        (diastolicBloodValue >= 90 && diastolicBloodValue <= 110) ) &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT' && isAtLeast35YearsOld() &&
+                checkReviewOfSystemsGeneralForDisplay() && currentMedication.indexOf("hctz") >= 0 &&
+                hctzNumberOfMilligram == 25 &&
+                (hctzFrequencyPerDay == '1639^MORNING^99DCT' || hctzFrequencyPerDay == '1730^EVENING^99DCT' ||
+                        hctzFrequencyPerDay == '1891^ONCE A DAY^99DCT'
+                        )
+                ) {
+            $htn_reminder_9.show();
+        } else {
+            $htn_reminder_9.hide();
+        }
+    };
+    displayHTNReminder9();
+
+    $('#obs\\.tmp_drugs\\.HCTZ').change(function () {
+        displayHTNReminder8();
+        displayHTNReminder9();
+    });
+    $hctzNumberOfMilligram.change(function () {
+        displayHTNReminder8();
+        displayHTNReminder9();
+    });
+    $hctzFrequencyPerDay.change(function () {
+        displayHTNReminder8();
+        displayHTNReminder9();
+    });
+
+    var displayHTNReminder10 = function () {
+        var $htn_reminder_10 = $('#obs\\.htn_reminder_10');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        if (systolicBloodValue <= 100 || diastolicBloodValue <= 50) {
+            $htn_reminder_10.show();
+        } else {
+            $htn_reminder_10.hide();
+        }
+    };
+    displayHTNReminder10();
+    /* End - Conditional display of HTN reminders */
+
+    /* Start - Conditional display of Diabetes reminders */
+
+    /* Start - DiabetesReminder1 */
+    var displayDiabetesReminder1 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var currentMedication = getCurrentMedicationValues();
+        var glycosylatedHemoglobinVal = parseFloat($glycosylatedHemoglobin.val());
+
+        var shouldDisplay = (
+                selectedVisitType in {'7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT': 1, '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT': 1} &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        currentMedication.indexOf("metformin") < 0 && currentMedication.indexOf("glibenclamide") < 0 &&
+                        (serumGlucoseFastingVal < 5.6 || glycosylatedHemoglobinVal < 5.7)
+                )
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_1').show();
+        else
+            $('#obs\\.diabetes_reminder_1').hide();
+    }
+    displayDiabetesReminder1();
+    /* End - DiabetesReminder1 */
+
+    /* Start - DiabetesReminder2 */
+    var displayDiabetesReminder2 = function () {
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobinVal = parseFloat($glycosylatedHemoglobin.val());
+
+        var shouldDisplay = (
+                urinePregnancyTestVal == '703^POSITIVE^99DCT' &&
+                        (serumGlucoseFastingVal >= 5.6 || glycosylatedHemoglobinVal >= 5.7)
+                )
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_2').show();
+        else
+            $('#obs\\.diabetes_reminder_2').hide();
+    }
+    displayDiabetesReminder2();
+    /* End - DiabetesReminder2 */
+
+    /* Start - DiabetesReminder3 */
+    var displayDiabetesReminder3 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var currentMedication = getCurrentMedicationValues();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobinVal = parseFloat($glycosylatedHemoglobin.val());
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+
+        var shouldDisplay = (
+                selectedVisitType in {'7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT': 1, '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT': 1} &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        currentMedication.indexOf("metformin") < 0 && currentMedication.indexOf("glibenclamide") < 0 &&
+                        ((serumGlucoseFastingVal >= 5.6 && serumGlucoseFastingVal <= 6.9) ||
+                                (glycosylatedHemoglobinVal >= 5.7 && glycosylatedHemoglobinVal <= 7.0) ||
+                                (systolicBloodValue < 140 || diastolicBloodValue < 90))
+                );
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_3').show();
+        else
+            $('#obs\\.diabetes_reminder_3').hide();
+    }
+    displayDiabetesReminder3();
+    /* End - DiabetesReminder3 */
+
+    /* Start - DiabetesReminder4 */
+    var displayDiabetesReminder4 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var currentMedication = getCurrentMedicationValues();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobinVal = parseFloat($glycosylatedHemoglobin.val());
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+
+        var shouldDisplay = (
+                selectedVisitType in {'7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT': 1, '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT': 1} &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        currentMedication.indexOf("metformin") < 0 && currentMedication.indexOf("glibenclamide") < 0 &&
+                        ((serumGlucoseFastingVal > 6.9 && serumGlucoseFastingVal <= 10) ||
+                                (glycosylatedHemoglobinVal > 7 && glycosylatedHemoglobinVal <= 9) ||
+                                (systolicBloodValue < 140 || diastolicBloodValue < 90))
+                );
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_4').show();
+        else
+            $('#obs\\.diabetes_reminder_4').hide();
+    }
+    displayDiabetesReminder4();
+    /* End - DiabetesReminder4 */
+
+    /* Start - DiabetesReminder5 */
+    var displayDiabetesReminder5 = function () {
+        /*
+         relevant="(../../current_visit_type/value = '7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT' or ../../current_visit_type/value = '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT')
+         and ../../urine_pregnancy_test_qualitative/value != '703^POSITIVE^99DCT'
+         and not(selected(../../tmp_drugs, 'metformin') or
+         selected(../../tmp_drugs, 'glibenclamide'))
+         and (../../serum_glucose_fasting/value &gt; 10.0 or ../../glycosylated_hemoglobin/value &gt; 9.0)"/>
+         */
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var currentMedication = getCurrentMedicationValues();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobinVal = parseFloat($glycosylatedHemoglobin.val());
+
+        var shouldDisplay = (
+                selectedVisitType in {'7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT': 1, '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT': 1} &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        currentMedication.indexOf("metformin") < 0 && currentMedication.indexOf("glibenclamide") < 0 &&
+                        (serumGlucoseFastingVal > 10 || glycosylatedHemoglobinVal > 9)
+                );
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_5').show();
+        else
+            $('#obs\\.diabetes_reminder_5').hide();
+    }
+    displayDiabetesReminder5();
+    /* End - DiabetesReminder5 */
+
+    /* Start - DiabetesReminder6 */
+    var displayDiabetesReminder6 = function () {
+        var currentMedication = getCurrentMedicationValues();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+
+        var shouldDisplay = (
+                currentMedication.indexOf("metformin") >= 0 &&
+                        (reviewOfSystemsGeneral.indexOf("5978^NAUSEA^99DCT") >= 0 ||
+                                reviewOfSystemsGeneral.indexOf("5980^VOMITING^99DCT") >= 0 ||
+                                reviewOfSystemsGeneral.indexOf("151^ABDOMINAL PAIN^99DCT") >= 0 ||
+                                reviewOfSystemsGeneral.indexOf("16^DIARRHEA^99DCT") >= 0 ||
+                                reviewOfSystemsGeneral.indexOf("996^CONSTIPATION^99DCT") >= 0)
+                );
+
+        if (shouldDisplay) {
+            $('#obs\\.diabetes_reminder_6').show();
+            $('#diabetes_reminder6_symptoms').text(reviewOfSystemsGeneral.join(", "));
+        }
+        else
+            $('#obs\\.diabetes_reminder_6').hide();
+    }
+    displayDiabetesReminder6();
+    /* End - DiabetesReminder6 */
+
+    /* Start - DiabetesReminder7 */
+    var displayDiabetesReminder7 = function () {
+        var currentMedication = getCurrentMedicationValues();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+
+        var shouldDisplay = (
+                currentMedication.indexOf("glibenclamide") >= 0 &&
+                        reviewOfSystemsGeneral.indexOf("7047^HYPOGLYCEMIA^99DCT") >= 0
+                );
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_7').show();
+        else
+            $('#obs\\.diabetes_reminder_7').hide();
+    };
+    displayDiabetesReminder7();
+    /* End - DiabetesReminder7 */
+
+    /* Start - DiabetesReminder8 */
+    var displayDiabetesReminder8 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        var currentMedication = getCurrentMedicationValues();
+        var metforminCurrentMilligramVal = parseFloat($metforminCurrentMilligram.val());
+        var metforminFrequencyPerDayVal = $metforminFrequencyPerDay.val();
+
+        var shouldDisplay = (
+                selectedVisitType == '7036^RETURN DISPENSARY VISIT^99DCT' &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        serumGlucoseFastingVal >= 8 &&
+                        reviewOfSystemsGeneral.indexOf("5978^NAUSEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("151^ABDOMINAL PAIN^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("16^DIARRHEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("996^CONSTIPATION^99DCT") < 0 &&
+                        currentMedication.indexOf("metformin") >= 0 &&
+                        metforminCurrentMilligramVal == 500 &&
+                        metforminFrequencyPerDayVal == '1888^TWICE A DAY^99DCT'
+                )
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_8').show();
+        else
+            $('#obs\\.diabetes_reminder_8').hide();
+    }
+    displayDiabetesReminder8();
+    /* End - DiabetesReminder8 */
+
+    /* Start - DiabetesReminder9 */
+    var displayDiabetesReminder9 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        var currentMedication = getCurrentMedicationValues();
+        var metforminCurrentMilligramVal = parseFloat($metforminCurrentMilligram.val());
+        var metforminFrequencyPerDayVal = $metforminFrequencyPerDay.val();
+
+        var shouldDisplay = (
+                selectedVisitType == '7036^RETURN DISPENSARY VISIT^99DCT' &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        serumGlucoseFastingVal >= 8 &&
+                        reviewOfSystemsGeneral.indexOf("5978^NAUSEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("151^ABDOMINAL PAIN^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("16^DIARRHEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("996^CONSTIPATION^99DCT") < 0 &&
+                        currentMedication.indexOf("metformin") >= 0 &&
+                        metforminCurrentMilligramVal == 750 &&
+                        metforminFrequencyPerDayVal == '1888^TWICE A DAY^99DCT'
+                )
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_9').show();
+        else
+            $('#obs\\.diabetes_reminder_9').hide();
+    }
+    displayDiabetesReminder9();
+    /* End - DiabetesReminder9 */
+
+    /* Start - DiabetesReminder10 */
+    var displayDiabetesReminder10 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        var currentMedication = getCurrentMedicationValues();
+        var metforminCurrentMilligramVal = parseFloat($metforminCurrentMilligram.val());
+        var metforminFrequencyPerDayVal = $metforminFrequencyPerDay.val();
+
+        var shouldDisplay = (
+                selectedVisitType == '7036^RETURN DISPENSARY VISIT^99DCT' &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        serumGlucoseFastingVal >= 8 &&
+                        reviewOfSystemsGeneral.indexOf("5978^NAUSEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("5980^VOMITING^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("151^ABDOMINAL PAIN^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("16^DIARRHEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("996^CONSTIPATION^99DCT") < 0 &&
+                        currentMedication.indexOf("metformin") >= 0 &&
+                        metforminCurrentMilligramVal == 1000
+                )
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_10').show();
+        else
+            $('#obs\\.diabetes_reminder_10').hide();
+    }
+    displayDiabetesReminder10();
+    /* End - DiabetesReminder10 */
+    /* End - Conditional display of Diabetes reminders */
+
+    /*  Start - Based on Selected current visit type show or hide fields */
+    var displayPHCTReview = function () {
+        var $show_provider_id_text = $("#phct_review");
+        var selected_visit_type = $currentVisitType.val();
+        if (selected_visit_type == '7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT') {
+            $("#phct_review").show();
+        } else {
+            $("#phct_review").hide();
+        }
+    };
+    /*  End - Based on Selected current visit type show or hide fields */
+
+    /* Start - Reminder triggers */
+    $birthdate.change(function () {
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder8();
+        displayHTNReminder9();
+    });
+    $currentVisitType.change(function () {
+        displayPHCTReview();
+        displayHTNReminder1();
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder8();
+        displayHTNReminder9();
+        displayDiabetesReminder1();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+        displayDiabetesReminder5();
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $urinePregnancyTest.change(function () {
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder4();
+        displayHTNReminder5();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder7();
+        displayHTNReminder8();
+        displayHTNReminder9();
+        displayDiabetesReminder1();
+        displayDiabetesReminder2();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+        displayDiabetesReminder5();
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $serumGlucoseFasting.change(function () {
+        displayHTNReminder3a();
+        displayHTNReminder3c();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayDiabetesReminder1();
+        displayDiabetesReminder2();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+        displayDiabetesReminder5();
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $glycosylatedHemoglobin.change(function () {
+        displayHTNReminder3a();
+        displayHTNReminder3c();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayDiabetesReminder1();
+        displayDiabetesReminder2();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+        displayDiabetesReminder5();
+    });
+    $systolicBloodPressure.change(function () {
+        displayHTNReminder1();
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder4();
+        displayHTNReminder5();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder7();
+        displayHTNReminder8();
+        displayHTNReminder9();
+        displayHTNReminder10();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+    });
+    $('input[name="obs.tmp_drugs"]').change(function () {
+        displayHTNReminder1();
+        displayHTNReminder3b();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayDiabetesReminder1();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+        displayDiabetesReminder5();
+        displayDiabetesReminder6();
+        displayDiabetesReminder7();
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $('input[name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"]').change(function () {
+        displayHTNReminder1();
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder7();
+        displayHTNReminder8();
+        displayHTNReminder9();
+        displayDiabetesReminder6();
+        displayDiabetesReminder7();
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $diastolicBloodPressure.change(function () {
+        displayHTNReminder1();
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder4();
+        displayHTNReminder5();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder7();
+        displayHTNReminder8();
+        displayHTNReminder9();
+        displayHTNReminder10();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+    });
+    $metforminCurrentMilligram.change(function () {
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $metforminFrequencyPerDay.change(function () {
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+    });
+
+    /* End - Reminder triggers */
+});
+
+</script>
+</html>
