@@ -1,0 +1,20 @@
+Registration form 
+===================
+
++ Introduction 
+
+This is the first version of the registration form created using HTML5. It adds logic where different types of IDs can be entered and validated. The simple validation involved requires a user to re-enter the details inserted into a field that requires validation.
+
++ How to add a validated field
+
+To add a input field type that is to be validated, 
+
+1. Insert the field type 'div'
+   <div id="..." class="...">
+	<label for="...">{name of id}</label>
+	<input class="need_validation" id="..." name="..." type="text">
+	<span class="alert_message"></span>
+    </div>
+
+## If the input field requires validation, add the 'need_validation' class to the input type 
+## add the '<span class="alert_message"></span>' section. This is where the error messages will be displayed
