@@ -56,8 +56,23 @@
         <input class="form-control" id="patient.mother_s_name" name="patient.mother_s_name" type="text">
     </div>
     <div class="form-group">
-        <label for="patient.amrs_universal_id_assigned">AMRS Universal ID assigned:</label>
-        <input class="form-control" id="patient.amrs_universal_id_assigned" name="patient.amrs_universal_id_assigned" type="text">
+        <label for="patient.type_of_id_used">Please select the type of id to be used:</label>
+	<select class="form-control autocomplete-select" id="type_of_id_used" name="patient.type_of_id_used"
+                required="required">
+            <option value="..."></option>
+ 	    <option value="patient_amrs_universal_id_assigned_group">AMRS Universal ID</option>
+            <option value="patient_amrs_other_type_of_id">Other type of id</option>
+        </select> 
+    </div>
+    <div id="patient_amrs_universal_id_assigned_group" class="form-group id_group">
+        <label for="patient_amrs_universal_id_assigned">AMRS Universal ID assigned:</label>
+        <input class="form-control" id="patient_amrs_universal_id_assigned" name="patient_amrs_universal_id_assigned" type="text">
+	<span class="alert_message"></span>
+    </div>
+    <div id="patient_amrs_other_type_of_id" class="form-group id_group">
+	<label for="patient.amrs_other_type_of_id">Other type of id:</label>
+	<input class="form-control need_validation" id="patient.amrs_other_type_of_id" name="patient.other_type_of_id" type="text">
+	<span class="alert_message"></span>
     </div>
 </div>
 <div class="section">
@@ -148,7 +163,7 @@
             <option value="3347-2">Gabriel Silas Okapes</option>
             <option value="3348-0">Henry Samson Obonyo</option>
             <option value="3349-8">Rebecca M. Wambura</option>
-            <option value="3350-6">Zeruya Amwatok Barua</option>
+            <option value="3350-6">Zeruy Amwatok Barua</option>
             <option value="3351-4">Immaculate Otengo Namibia</option>
             <option value="3352-2">Pamela Were Wamoyi</option>
             <option value="3357-1">Caroline Wafula Nandisi</option>
@@ -175,9 +190,78 @@
 <script type="text/javascript">
 $(document).ready(function () {
 
+    var IDInputFieldEntered = false ; 
+    var formerIDEntered = '' ; 
+     
     $('#save_draft').click(function () {
         document.saveDraft();
     });
+
+    $('.need_validation').blur(function () {
+
+	alertMessageSection  = $(this).parent().find('.alert_message') ; 
+
+	if(!IDInputFieldEntered) {
+		formerIDEntered = $(this).val() ; 
+		clearTextField($(this)) ; 
+		displayMessage('please re-enter the id field', alertMessageSection)  ; 
+		IDInputFieldEntered = true ; 
+	} else {
+		IDEntered = $(this).val() ; 
+		if (!validateAMRSIDInputField(IDEntered, formerIDEntered)) {
+			displayMessage('Initially entered ID and current ID do not match. Please enter again'
+					, alertMessageSection) ;	
+			clearTextField($(this)) ; 
+		} else {
+			displayMessage('comparison ok', alertMessageSection); 
+		}
+	
+		IDInputFieldEntered = false ; 
+		formerIDEntered = IDEntered ;
+	}
+    }) ;
+
+    var clearTextField = function(inputTextField) {
+	$(inputTextField).val('') ; 
+    }
+
+    var displayMessage = function (message, alertMessageSection) {
+	if(message && message.length > 0) {
+		$(alertMessageSection).text(message) ; 
+	}
+    } ; 
+
+    var validateAMRSIDInputField = function (initialField, currentField) {
+	if ((initialField && initialField.length > 0) && 
+		(currentField && currentField.length > 0)) {
+		
+		return initialField == currentField ;
+	
+	} 
+	
+	return false ; 
+    } ; 
+
+    $('#type_of_id_used').change(function() {
+	var selectedIDType = $(this).find(':selected').val()  ;
+	loadSelectedIDInputType(selectedIDType) ; 
+    });
+
+    var loadSelectedIDInputType = function(selectedIDType) {	
+	hideAllIDTypesFields() ;
+	displaySelectedIDInputField('#' + selectedIDType) ;  
+    };
+
+    var hideAllIDTypesFields = function () {
+	$('.id_group').hide() ;
+    } ;  
+
+    var displaySelectedIDInputField = function(selectedIDInputType) {
+	$(selectedIDInputType).show() ; 
+    } ;
+
+    hideAllIDTypesFields() ;
+
     $('#dispensary_form').validate({
         rules: {
             pulse: {
